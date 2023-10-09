@@ -1,0 +1,27 @@
+Algotithm Wake Up:
+
+Início;
+
+1- Abro os olhos;
+2- Checo o celular em caso de alguma urgencia;
+3- Levanto da cama;
+4- Após levantar, vou ao escritório e preparo para alimentar a cachorrinha;
+5- Pego o dosador de quantidade da racao;
+6- Coloco a quantidade recomendada;
+7- Procedo para a area externa para alimenta-la;
+8- A porta da frente está aberta? Sim;
+   1- Abro a porta;
+   2- Me dirijo ate a area de alimentacao do pet;
+   3- Coloco a racao na vasilha;
+   4- Brinco um pouco com a cachorrinha;
+9- Nao;
+   1- Pego a chave;
+   2- Destranco a porta;
+   3- Abro a porta;
+   4- Me dirijo ate a area de alimentacao do pet;
+   5- Coloco a racao na vasilha;
+   6- Brinco um pouco com a cachorrinha;
+10- Retorno para dentro de casa;
+11- Inicio os procedimentos para o café da manha;
+
+Fim;
