@@ -1,0 +1,12 @@
+ O padrao de projeto "Injecao de Dependencia" tem como principais caracteristicas a busca
+pelo desacoplamento do codigo (ou seja, reducao de interdepencias desnecessarias), melhora de legibilidade e interpretacao e melhora na distribuicao de funcoes, o que resulta em uma
+melhor manutencao do codigo.
+
+A proposta é de reduzir instancias de objetos em classes que utilizam as funcionalidades de outras classes que possam a ser alterados em uma possivel necessidade futura. Atraves da 
+criacao de um metodo abstract em que outras classes poderao fazer uso de propriedades gerais e que, deste modo, nao se há a necessidade de reproduzir a linha de codigo duplamente.
+
+O Spring framework se utiliza de um Container chamado Spring IoC Container, no qual todo o
+processo de gestao de depencia é automatizado, ou seja, as intancias sao geradas automaticamente pela ferramenta. Os objetos criados pelo Container sao chamados de Beans.
+Como o programa faz toda a dependencia sem a necessidade de qualquer configuracao, se caso em algum cenario faz-se a necessidade de mudancas especificas, ha a possibilidade da criacao de uma classe Java com a descricao "@Configuration" e nela os novos métodos sao definidos e devidamente alterados.
+
+ 
