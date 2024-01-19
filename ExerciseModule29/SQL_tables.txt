@@ -1,0 +1,37 @@
+create sequence sq_customer1
+start 1
+increment 1
+owned by tb_customer1.id;
+
+create table tb_customer1 (
+	id bigint,
+	name varchar(50) not null,
+	code varchar(50) not null,
+	constraint pk_id_customer1 primary key(id)
+);
+
+select * from tb_customer1;
+
+select * from tb_customer1
+where code = '2';
+
+delete from tb_customer1;
+
+select from tb_customer1
+where code = '10';
+
+create sequence sq_product
+start 1
+increment 1
+owned by tb_product.id;
+
+create table tb_product (
+	id bigint,
+	pname varchar(50) not null,
+	pcode varchar(50) not null,
+	constraint pk_id_product primary key(id)
+);
+
+select * from tb_product;
+
+delete from tb_product;
