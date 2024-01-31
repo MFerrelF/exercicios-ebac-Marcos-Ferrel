@@ -1,0 +1,95 @@
+create table tb_customer (
+	id bigint,
+	name varchar(50) not null,
+	cpf bigint not null,
+	phoneNumber bigint not null,
+	address varchar(50) not null,
+	number bigint not null,
+	city varchar(50) not null,
+	state varchar(50) not null,
+	constraint pk_id_customer primary key(id)
+);
+
+create sequence sq_customer
+start 1
+increment 1
+owned by tb_customer.id;
+
+create table tb_product(
+	id bigint,
+	code varchar(10) not null,
+	name varchar(50) not null,
+	description varchar(100) not null,
+	value numeric(10,2) not null,
+	constraint pk_id_product primary key(id)
+);
+
+create sequence sq_product
+start 1
+increment 1
+owned by tb_product.id;
+
+create table tb_sales (
+	id bigint,
+	code varchar(10) not null,
+	id_customer_fk bigint not null,
+	total_value numeric(10,2) not null,
+	sales_date TIMESTAMPTZ not null,
+	sales_status varchar(50) not null,
+	constraint pk_id_sales primary key(id),
+	constraint fk_id_customer_sales foreign key(id_customer_fk) references tb_customer(id)	
+);
+
+create sequence sq_sales
+start 1
+increment 1
+owned by tb_sales.id;
+
+create table tb_quantity_product(
+	id bigint,
+	id_product_fk bigint not null,
+	id_sales_fk bigint not null,
+	quantity int not null,
+	total_value numeric(10,2) not null,
+	constraint pk_id_product_sales primary key(id),
+	constraint fk_id_product_sales foreign key(id_product_fk) references tb_product(id),
+	constraint fk_id_product_sales_sales foreign key(id_sales_fk) references tb_sales(id)
+);
+
+create sequence sq_quantity_product
+start 1
+increment 1
+owned by tb_quantity_product.id;
+
+alter table tb_customer
+add constraint uk_cpf_customer unique (cpf);
+
+alter table tb_product
+add constraint uk_code_product unique (code);
+
+alter table tb_sales
+add constraint uk_code_sales unique (code);
+
+select * from tb_customer;
+select * from tb_product;
+select * from tb_sales;
+select * from tb_quantity_product;
+
+select v.id as id_sales, v.code, v.id_customer_fk, v.total_value, v.sales_date, v.sales_status,
+c.id as id_customer, c.name, c.cpf, c.phoneNumber as phone_number, c.address, c.city, c.state,
+p.id as id_quant_prod, p.quantity, p.total_value as prod_quant_total_value
+from tb_sales v
+inner join tb_customer c on v.id_customer_fk = v.id
+inner join tb_quantity_product p on p.id_sales_fk = v.id
+where v.code = 'A1';
+
+select pq.id, pq.quantity, pq.total_value,
+p.id as id_product, p.code, p.name, p.description, p.value
+from tb_quantity_product pq
+inner join tb_product p on p.id = pq.id_product_fk;
+
+alter table tb_customer
+add column companyEmployee char;
+
+alter table tb_customer
+add constraint check_companyEmployee check (companyEmployee in ('Y', 'N'));
