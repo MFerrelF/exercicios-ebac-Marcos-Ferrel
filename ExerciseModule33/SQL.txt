@@ -1,0 +1,13 @@
+select * from tb_brand;
+
+select * from tb_car;
+
+select * from tb_accessories;
+
+delete from tb_brand;
+delete from tb_car;
+delete from tb_accessories;
+
+drop table tb_brand;
+drop table tb_car;
+drop table tb_accessories;
